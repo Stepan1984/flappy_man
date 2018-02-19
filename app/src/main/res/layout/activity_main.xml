@@ -20,7 +20,16 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/flappy_bg" />
+            app:srcCompat="@drawable/bg2" />
+
+        <TextView
+            android:id="@+id/score_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:text="   0   "
+            android:textSize="200sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/bird_view"
@@ -33,9 +42,78 @@
             android:id="@+id/wall_view"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/wall_flappy" />
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lose_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="match_parent"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            app:srcCompat="@drawable/golden_bg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="wrap_content"
+                android:text="  You lose"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="80sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/score_view_lose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="wrap_content"
+                android:text="SCORE ="
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/best_record_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="wrap_content"
+                android:text="BEST RECORD = "
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:text="BEST RECORD = " />
+
+            <Button
+                android:id="@+id/start_new_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="wrap_content"
+                android:text="start new game"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="start new game" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

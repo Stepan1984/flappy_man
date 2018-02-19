@@ -1,6 +1,8 @@
 package com.banana.flappy;
 
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,20 +14,20 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-ImageView bg_view;
-ImageView wall_view;
-ImageView man_view;
-TextView scoreTextView;
-TextView scoreViewLose;
-TextView bestRecordView;
-RelativeLayout loseLayout;
+    ImageView bg_view;
+    ImageView wall_view;
+    ImageView man_view;
+    TextView scoreTextView;
+    TextView scoreViewLose;
+    TextView bestRecordView;
+    RelativeLayout loseLayout;
 
     float obstacleX = 500;
     float obstacleY = 0;
     float birdY = 0;
     float birdV = 0;
     int score = 0;
-    int bestRecord = 0;
+    int record = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ RelativeLayout loseLayout;
 
         initializeTimer();
     }
+
     private void initializeTimer() {
         final Handler handler = new Handler();
         new Timer().scheduleAtFixedRate(new TimerTask() {
@@ -70,14 +73,14 @@ RelativeLayout loseLayout;
     private void onTimer() {
         obstacleX -= 7.5;
 
-        if(wall_view.getTranslationX() < -500){
+        if (wall_view.getTranslationX() < -500) {
             obstacleX = 500;
             score++;
-            obstacleY = (float) (Math.random()*400-200);
+            obstacleY = (float) (Math.random() * 400 - 200);
         }
         birdV += 0.4;
         birdY += birdV;
-        if (birdY > 750 || birdY < -750){
+        if (birdY > 750 || birdY < -750) {
             showGameOverDialog();
         }
 
@@ -90,22 +93,39 @@ RelativeLayout loseLayout;
         man_view.setTranslationY(birdY);
 
     }
-    private void showGameOverDialog (){
+
+    private void showGameOverDialog() {
         loseLayout.setVisibility(View.VISIBLE);
-        if(score > bestRecord){
-            bestRecord = score;
-        }else(bestRecord >= score){
-            bestRecord = bestRecord;
+        if (score > record) {
+            saveRecord(record);
+        } else (record >= score){
+            getRecord();
         }
         scoreViewLose.setText("SCORE=" + score);
-        bestRecordView.setText("BEST RECORD=" + bestRecord);
+        bestRecordView.setText("BEST RECORD=" + record);
     }
 
-    private void startNewGame(){
+    private void startNewGame() {
         obstacleX = 500;
         obstacleY = 0;
         birdY = 0;
         birdV = 0;
-        score =  0  ;
+        score = 0;
+    }
+
+    private void saveRecord(int record) {
+        // получаем штуку для сохранения данных
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        // открываем её для записи
+        SharedPreferences.Editor editor = preferences.edit();
+        // записываем число
+        editor.putInt("РЕКОРД", record);
+        // сохраняем изменения
+        editor.apply();
+    }
+    private int getRecord() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        return preferences.getInt("РЕКОРД", 0);
+
     }
 }
