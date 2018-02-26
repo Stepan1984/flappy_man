@@ -46,6 +46,13 @@
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/wall_flappy" />
 
+        <Button
+            android:id="@+id/pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="||"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -58,7 +65,6 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="match_parent"
             android:scaleType="centerCrop"
             android:visibility="visible"
             app:srcCompat="@drawable/golden_bg" />
@@ -72,7 +78,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="wrap_content"
                 android:text="  You lose"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_dark"
@@ -83,7 +88,6 @@
                 android:id="@+id/score_view_lose"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="wrap_content"
                 android:text="SCORE ="
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_blue_dark"
@@ -94,7 +98,6 @@
                 android:id="@+id/best_record_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="wrap_content"
                 android:text="BEST RECORD = "
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_blue_dark"
@@ -106,7 +109,6 @@
                 android:id="@+id/start_new_game"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="wrap_content"
                 android:text="start new game"
                 android:textColor="@android:color/holo_green_dark"
                 android:textSize="24sp"
@@ -114,6 +116,23 @@
                 tools:text="start new game" />
 
         </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pause_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/resume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Resume"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
