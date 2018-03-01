@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -64,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
         initializeTimer();
         showGameOverDialog();
+        Glide.with(this)
+                .load("https://www.planwallpaper.com/static/images/Alien_Ink_2560X1600_Abstract_Background_1.jpg")
+                .into(bg_view);
     }
 
     private void initializeTimer() {
@@ -176,5 +181,10 @@ public class MainActivity extends AppCompatActivity {
         started = true;
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        started=false;
+        pauseMenu();
+    }
 }

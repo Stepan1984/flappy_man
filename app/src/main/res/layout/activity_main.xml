@@ -36,7 +36,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
-            app:srcCompat="@drawable/bananaman_view" />
+            app:srcCompat="@drawable/spr" />
 
         <ImageView
             android:id="@+id/wall_view"
