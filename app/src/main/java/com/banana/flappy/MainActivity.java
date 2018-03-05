@@ -1,6 +1,7 @@
 package com.banana.flappy;
 
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         initializeTimer();
+        AnimationDrawable animation = (AnimationDrawable) man_view.getBackground();
+        animation.start();
         showGameOverDialog();
         Glide.with(this)
                 .load("https://www.planwallpaper.com/static/images/Alien_Ink_2560X1600_Abstract_Background_1.jpg")
